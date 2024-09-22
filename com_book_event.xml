@@ -24,6 +24,9 @@
     <!-- Administration Menu -->
     <administration>
         <menu>COM_BOOK_EVENT_MENU</menu>
+        <submenu>
+            <menu link="index.php?option=com_book_event&view=events">COM_BOOK_EVENT_EVENTS</menu>
+        </submenu>
         <files folder="administrator">
             <filename>com_book_event.php</filename>
             <folder>controllers</folder>
