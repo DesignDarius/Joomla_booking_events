@@ -4,6 +4,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\MVC\View\HtmlView;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Factory;
 
 class BookEventViewEvents extends HtmlView
 {
@@ -20,6 +21,13 @@ class BookEventViewEvents extends HtmlView
         // Preparing filters
         $this->prepareFilters();
 
+        // Provera grešaka
+        if (count($errors = $this->get('Errors')))
+        {
+            Factory::getApplication()->enqueueMessage(implode("\n", $errors), 'error');
+            return false;
+        }
+
         // Set the toolbar
         $this->addToolbar();
 
@@ -29,7 +37,7 @@ class BookEventViewEvents extends HtmlView
 
     protected function prepareFilters()
     {
-        $app = JFactory::getApplication();
+        $app = Factory::getApplication();
         $input = $app->input;
 
         // Filter search

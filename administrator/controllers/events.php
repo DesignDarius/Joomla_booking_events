@@ -12,6 +12,19 @@ class BookEventControllerEvents extends AdminController
         $this->registerTask('unfeatured', 'featured');
     }
 
+    public function display($cachable = false, $urlparams = array())
+    {
+        // Postavlja podrazumevani pogled na 'events'
+        $view = $this->input->getCmd('view', 'events');
+        $this->input->set('view', $view);
+        parent::display($cachable, $urlparams);
+    }
+
+    public function getModel($name = 'Event', $prefix = 'BookEventModel')
+    {
+        return parent::getModel($name, $prefix);
+    }
+
     protected function allowAdd($data = array())
     {
         return Factory::getUser()->authorise('core.create', 'com_book_event');
@@ -73,19 +86,5 @@ class BookEventControllerEvents extends AdminController
 
         // Inherit rights from the asset if not explicitly set!
         return Factory::getUser()->authorise('core.edit.state', $assetKey);
-    }
-
-    public function getModel($name = 'Event', $prefix = 'BookEventModel')
-    {
-        return parent::getModel($name, $prefix);
-    }
-
-    public function display($cachable = false, $urlparams = array())
-    {
-        // Postavlja podrazumevani pogled na 'events'
-        $view = $this->input->get('view', 'events');
-        $this->input->set('view', $view);
-
-        parent::display($cachable, $urlparams);
     }
 }
