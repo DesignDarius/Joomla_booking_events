@@ -52,6 +52,9 @@
 			<menu link="option=com_book_event&amp;view=bookevents" view="bookevents" alt="Book_event/Bookevents">COM_BOOK_EVENT_TITLE_BOOKEVENTS</menu>
 
         </submenu>
+        <submenu>
+    <menu link="index.php?option=com_book_event&view=booking">Bookings</menu>
+</submenu>
         <files folder="administrator">
             <filename>access.xml</filename>
             <filename>config.xml</filename>

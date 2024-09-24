@@ -43,3 +43,11 @@ SELECT * FROM ( SELECT 'BookEvent','com_book_event.bookevent','{"special":{"dbta
 WHERE NOT EXISTS (
 	SELECT type_alias FROM `#__content_types` WHERE (`type_alias` = 'com_book_event.bookevent')
 ) LIMIT 1;
+CREATE TABLE IF NOT EXISTS `#__book_event_bookings` (
+    `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(255) NOT NULL,
+    `email` VARCHAR(255) NOT NULL,
+    `event_id` INT(11) NOT NULL,
+    `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
