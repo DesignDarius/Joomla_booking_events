@@ -53,7 +53,7 @@
 
         </submenu>
         <submenu>
-    <menu link="index.php?option=com_book_event&view=booking">Bookings</menu>
+    <menu link="index.php?option=com_book_event&amp;view=booking">Bookings</menu>
 </submenu>
         <files folder="administrator">
             <filename>access.xml</filename>
