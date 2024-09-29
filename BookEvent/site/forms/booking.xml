@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="booking">
+        <field
+            name="name"
+            type="text"
+            label="COM_BOOK_EVENT_BOOKING_FIELD_NAME_LABEL"
+            description="COM_BOOK_EVENT_BOOKING_FIELD_NAME_DESC"
+            required="true"
+        />
+        <field
+            name="email"
+            type="email"
+            label="COM_BOOK_EVENT_BOOKING_FIELD_EMAIL_LABEL"
+            description="COM_BOOK_EVENT_BOOKING_FIELD_EMAIL_DESC"
+            validate="email"
+            required="true"
+        />
+        <field
+            name="event"
+            type="sql"
+            label="COM_BOOK_EVENT_BOOKING_FIELD_EVENT_LABEL"
+            description="COM_BOOK_EVENT_BOOKING_FIELD_EVENT_DESC"
+            query="SELECT id, title FROM #__book_event_events"
+            key_field="id"
+            value_field="title"
+            required="true"
+        />
+    </fieldset>
+</form>

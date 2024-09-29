@@ -51,3 +51,15 @@ CREATE TABLE IF NOT EXISTS `#__book_event_bookings` (
     `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- Your existing table creations here
+
+-- Add the new bookings table
+CREATE TABLE IF NOT EXISTS `#__book_event_bookings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `event` varchar(255) NOT NULL,
+  `booking_date` datetime NOT NULL,
+  `status` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
