@@ -6,10 +6,10 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Router\Route;
 
-HTMLHelper::_('behavior.multiselect'); // Enable multi-select
+HTMLHelper::_('behavior.multiselect');
+
 $listOrder = $this->escape($this->state->get('list.ordering'));
 $listDirn  = $this->escape($this->state->get('list.direction'));
-
 ?>
 
 <form action="<?php echo Route::_('index.php?option=com_book_event&view=bookings'); ?>" method="post" name="adminForm" id="adminForm">
@@ -23,20 +23,17 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                         <?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
                     </div>
                 <?php else : ?>
-                    <table class="table table-striped" id="bookingsList">
+                    <table class="table" id="bookingsList">
                         <thead>
                             <tr>
-                                <th scope="col" width="1%" class="text-center d-none d-md-table-cell">
+                                <th scope="col" style="width:1%" class="text-center d-none d-md-table-cell">
                                     <?php echo HTMLHelper::_('grid.checkall'); ?>
                                 </th>
                                 <th scope="col">
                                     <?php echo HTMLHelper::_('searchtools.sort', 'COM_BOOK_EVENT_BOOKING_FIELD_NAME_LABEL', 'a.name', $listDirn, $listOrder); ?>
                                 </th>
                                 <th scope="col">
-                                    <?php echo HTMLHelper::_('searchtools.sort', 'COM_BOOK_EVENT_BOOKING_FIELD_EMAIL_LABEL', 'a.email', $listDirn, $listOrder); ?>
-                                </th>
-                                <th scope="col">
-                                    <?php echo HTMLHelper::_('searchtools.sort', 'COM_BOOK_EVENT_BOOKING_FIELD_EVENT_LABEL', 'a.event_id', $listDirn, $listOrder); ?>
+                                    <?php echo HTMLHelper::_('searchtools.sort', 'COM_BOOK_EVENT_BOOKING_FIELD_EVENT_LABEL', 'a.event', $listDirn, $listOrder); ?>
                                 </th>
                                 <th scope="col">
                                     <?php echo HTMLHelper::_('searchtools.sort', 'COM_BOOK_EVENT_BOOKING_FIELD_DATE_LABEL', 'a.booking_date', $listDirn, $listOrder); ?>
@@ -59,10 +56,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                                     <?php echo $this->escape($item->name); ?>
                                 </td>
                                 <td>
-                                    <?php echo $this->escape($item->email); ?>
-                                </td>
-                                <td>
-                                    <?php echo $this->escape($item->event_id); ?>
+                                    <?php echo $this->escape($item->event); ?>
                                 </td>
                                 <td>
                                     <?php echo $this->escape($item->booking_date); ?>
@@ -79,8 +73,8 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                     </table>
                     <?php echo $this->pagination->getListFooter(); ?>
                 <?php endif; ?>
-                <input type="hidden" name="task" value="" />
-                <input type="hidden" name="boxchecked" value="0" />
+                <input type="hidden" name="task" value="">
+                <input type="hidden" name="boxchecked" value="0">
                 <?php echo HTMLHelper::_('form.token'); ?>
             </div>
         </div>
