@@ -23,7 +23,7 @@ class BookingsController extends AdminController
     // Allow editing of bookings
     protected function allowEdit($data = array(), $key = 'id')
     {
-        $recordId = (int) isset($data[$key]) ? $data[$key] : 0;
+        $recordId = (int) (isset($data[$key]) ? $data[$key] : 0);
         $user = Factory::getApplication()->getIdentity();
 
         // Check general edit permission first.
@@ -35,10 +35,10 @@ class BookingsController extends AdminController
         // Fallback on edit.own
         if ($user->authorise('core.edit.own', 'com_book_event'))
         {
-            $ownerId = (int) isset($data['created_by']) ? $data['created_by'] : 0;
+            $ownerId = (int) (isset($data['created_by']) ? $data['created_by'] : 0);
             if (empty($ownerId) && $recordId)
             {
-                // Lookup from the model
+                // Need to do a lookup from the model.
                 $record = $this->getModel()->getItem($recordId);
                 if (empty($record))
                 {
@@ -62,6 +62,7 @@ class BookingsController extends AdminController
     // Method to edit an existing booking
     public function edit($key = null, $unique = false)
     {
+        // Redirect to the edit form for a specific booking
         $this->setRedirect('index.php?option=com_book_event&view=booking&layout=edit&id=' . (int) $this->input->getInt('id'));
     }
 
